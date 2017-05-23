@@ -15,7 +15,7 @@ ENV NODE_HOME /opt/node
 #ADD https://nodejs.org/dist/${MAVEN_VERSION}/node-${MAVEN_VERSION}-linux-x64.tar.xz /opt/
 
 COPY node-v7.10.0-linux-x64.tar.xz  /opt/
-COPY Dockerfile /opt/
+#COPY Dockerfile /opt/
 COPY test.sh /opt/
 
 RUN cd /opt/ && \
@@ -25,4 +25,4 @@ RUN cd /opt/ && \
 RUN echo -e '\nexport NODE_HOME=/opt/node' >> /etc/profile && \
     echo -e '\nexport PATH=$NODE_HOME/bin:$PATH' >> /etc/profile
 RUN  . /etc/profile  
-RUN mkdir -pv /opt/ocetest/
+#RUN mkdir -pv /opt/ocetest/
