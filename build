@@ -21,7 +21,7 @@ if sudo docker images |grep none ; then
 fi
 
 
-
+sudo docker cp mynpm:/opt/ocetest/build $WORKSPACE/ocetest/
 
 
 exec "$@"
