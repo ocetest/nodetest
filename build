@@ -20,8 +20,14 @@ if sudo docker images |grep none ; then
    sudo docker images |grep none |awk '{print $3}' | sudo xargs docker rmi -f
 fi
 
+if [ ! -d "$WORKSPACE/wlbuild" ];then
+    sudo mkdir -pv $WORKSPACE/wlbuild
+else
+    sudo rm -rf $WORKSPACE/wlbuild
+    sudo mkdir -pv $WORKSPACE/wlbuild
+fi
 
-sudo docker cp mynpm:/opt/ocetest/build $WORKSPACE/ocetest/
+sudo docker cp mynpm:/opt/ocetest/build $WORKSPACE/wlbuild/
 
 
 exec "$@"
