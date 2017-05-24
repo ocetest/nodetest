@@ -28,7 +28,7 @@ else
     sudo mkdir -pv $WORKSPACE/wlbuild
 fi
 
-sudo docker cp -r  mynpm:/opt/ocetest/build $WORKSPACE/wlbuild/
+sudo docker cp   mynpm:/opt/ocetest/build $WORKSPACE/wlbuild/
 
 
 exec "$@"
