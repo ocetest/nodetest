@@ -22,6 +22,7 @@ fi
 
 if [ ! -d "$WORKSPACE/wlbuild" ];then
     sudo mkdir -pv $WORKSPACE/wlbuild
+    sudo chown -R go:go $WORKSPACE/wlbuild
 else
     sudo rm -rf $WORKSPACE/wlbuild
     sudo mkdir -pv $WORKSPACE/wlbuild
