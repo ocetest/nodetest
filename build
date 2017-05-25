@@ -2,16 +2,16 @@
 
 set -e
 
-WORKSPACE=/var/lib/go-agent/pipelines/npm
-if sudo docker ps -a | grep -i mynpm; then
-   sudo docker cp $WORKSPACE/node_docker/test.sh  mynpm:/opt/
-   sudo docker cp $WORKSPACE/ocetest  mynpm:/opt/
-   sudo docker exec -i mynpm /bin/bash /opt/test.sh
+WORKSPACE=/var/lib/go-agent/pipelines/newtest
+if sudo docker ps -a | grep -i mynewtest; then
+   sudo docker cp $WORKSPACE/npmdocker/test.sh  mynewtest:/opt/
+   sudo docker cp $WORKSPACE/facilities/src/external/facilities  mynewtest:/opt/
+   sudo docker exec -i mynewtest /bin/bash /opt/test.sh
 else
-   sudo docker build -t bj/nodejs:7.10.0  $WORKSPACE/node_docker/
-   sudo docker run -d --name mynpm bj/nodejs:7.10.0
-   sudo docker cp $WORKSPACE/ocetest  mynpm:/opt/
-   sudo docker exec -i mynpm /bin/bash /opt/test.sh
+   sudo docker build -t bj/nodejs:7.10.0  $WORKSPACE/npmdocker/
+   sudo docker run -d --name mynewtest bj/nodejs:7.10.0
+   sudo docker cp $WORKSPACE/facilities/src/external/facilities  mynewtest:/opt/
+   sudo docker exec -i mynewtest /bin/bash /opt/test.sh
 
 fi
 
@@ -28,7 +28,7 @@ else
     sudo mkdir -pv $WORKSPACE/wlbuild
 fi
 
-sudo docker cp   mynpm:/opt/ocetest/build $WORKSPACE/wlbuild/
+sudo docker cp   mynewtest:/opt/facilities/build $WORKSPACE/wlbuild/
 
 
 exec "$@"
