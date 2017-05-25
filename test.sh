@@ -1,8 +1,9 @@
 #!/bin/bash
 
+NPMDATA=/opt/facilities
 
 source /etc/profile
 
-cd /opt/ocetest/
+cd $NPMDATA
 npm install
 npm run build
